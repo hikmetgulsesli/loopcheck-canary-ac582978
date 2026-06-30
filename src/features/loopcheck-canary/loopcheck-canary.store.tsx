@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useReducer } from 'react';
+import { createContext, useContext, useEffect, useReducer, useRef } from 'react';
 import type { ReactNode, Dispatch } from 'react';
 import { loadState, saveState } from './loopcheck-canary.repo';
 import { defaultState } from '../../__fixtures__/loopcheck-canary.fixture';
@@ -161,20 +161,35 @@ function initializeState(initial: LoopcheckAppState): LoopcheckAppState {
 
 export function LoopcheckProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(reducer, defaultState, initializeState);
+  const stateRef = useRef(state);
+  stateRef.current = state;
 
   useEffect(() => {
-    const handler = setTimeout(() => {
-      saveState(state);
-    }, 1000);
+    let timeoutId: ReturnType<typeof setTimeout> | null = null;
+    let lastSavedAt = 0;
+    const SAVE_INTERVAL_MS = 1000;
+
+    const scheduleThrottledSave = () => {
+      if (timeoutId) return;
+      const elapsed = Date.now() - lastSavedAt;
+      const delay = elapsed >= SAVE_INTERVAL_MS ? 0 : SAVE_INTERVAL_MS - elapsed;
+      timeoutId = setTimeout(() => {
+        saveState(stateRef.current);
+        lastSavedAt = Date.now();
+        timeoutId = null;
+      }, delay);
+    };
+
+    scheduleThrottledSave();
 
     const handleBeforeUnload = () => {
-      saveState(state);
+      saveState(stateRef.current);
     };
 
     window.addEventListener('beforeunload', handleBeforeUnload);
 
     return () => {
-      clearTimeout(handler);
+      if (timeoutId) clearTimeout(timeoutId);
       window.removeEventListener('beforeunload', handleBeforeUnload);
     };
   }, [state]);
