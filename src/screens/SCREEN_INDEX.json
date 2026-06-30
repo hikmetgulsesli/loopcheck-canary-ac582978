@@ -1,0 +1,144 @@
+[
+  {
+    "screenId": "a27309769eb04ad8869805368be651b2",
+    "title": "Gameplay - LoopCheck Canary",
+    "componentName": "GameplayLoopcheckCanary",
+    "file": "src/screens/GameplayLoopcheckCanary.tsx",
+    "buttons": 6,
+    "inputs": 1,
+    "links": 4,
+    "actions": [
+      {
+        "id": "notifications-1",
+        "kind": "button",
+        "label": "Notifications",
+        "index": 0
+      },
+      {
+        "id": "account-circle-2",
+        "kind": "button",
+        "label": "Account Circle",
+        "index": 1
+      },
+      {
+        "id": "notifications-3",
+        "kind": "button",
+        "label": "Notifications",
+        "index": 2
+      },
+      {
+        "id": "start-game-4",
+        "kind": "button",
+        "label": "Start Game",
+        "index": 3
+      },
+      {
+        "id": "restart-game-5",
+        "kind": "button",
+        "label": "Restart Game",
+        "index": 4
+      },
+      {
+        "id": "sync-6",
+        "kind": "button",
+        "label": "Sync",
+        "index": 5
+      },
+      {
+        "id": "gameplay-1",
+        "kind": "link",
+        "label": "Gameplay",
+        "href": "#",
+        "index": 0
+      },
+      {
+        "id": "settings-2",
+        "kind": "link",
+        "label": "Settings",
+        "href": "#",
+        "index": 1
+      },
+      {
+        "id": "gameplay-3",
+        "kind": "link",
+        "label": "Gameplay",
+        "href": "#",
+        "index": 2
+      },
+      {
+        "id": "settings-4",
+        "kind": "link",
+        "label": "Settings",
+        "href": "#",
+        "index": 3
+      }
+    ]
+  },
+  {
+    "screenId": "30209eeafe33472491dee38278dc1ed6",
+    "title": "Game Settings - LoopCheck Canary",
+    "componentName": "GameSettingsLoopcheckCanary",
+    "file": "src/screens/GameSettingsLoopcheckCanary.tsx",
+    "buttons": 7,
+    "inputs": 5,
+    "links": 2,
+    "actions": [
+      {
+        "id": "notifications-1",
+        "kind": "button",
+        "label": "Notifications",
+        "index": 0
+      },
+      {
+        "id": "account-circle-2",
+        "kind": "button",
+        "label": "Account Circle",
+        "index": 1
+      },
+      {
+        "id": "save-preferences-3",
+        "kind": "button",
+        "label": "Save Preferences",
+        "index": 2
+      },
+      {
+        "id": "return-to-gameplay-4",
+        "kind": "button",
+        "label": "Return to Gameplay",
+        "index": 3
+      },
+      {
+        "id": "reset-preferences-5",
+        "kind": "button",
+        "label": "Reset Preferences",
+        "index": 4
+      },
+      {
+        "id": "gameplay-6",
+        "kind": "button",
+        "label": "Gameplay",
+        "index": 5
+      },
+      {
+        "id": "settings-7",
+        "kind": "button",
+        "label": "Settings",
+        "index": 6
+      },
+      {
+        "id": "gameplay-1",
+        "kind": "link",
+        "label": "Gameplay",
+        "href": "#",
+        "index": 0
+      },
+      {
+        "id": "settings-2",
+        "kind": "link",
+        "label": "Settings",
+        "href": "#",
+        "index": 1
+      }
+    ]
+  }
+]
