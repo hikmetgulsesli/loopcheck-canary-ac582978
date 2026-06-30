@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import {
   GameplayLoopcheckCanary,
   GameSettingsLoopcheckCanary,
@@ -41,37 +41,53 @@ function AppShell() {
     if (state.runtime.paused) return;
     let frameId = 0;
     const loop = () => {
-      dispatch({ type: 'TICK' });
+      dispatch({
+        type: 'TICK',
+        payload: {
+          obstacleRand: Math.random(),
+          shardRand: Math.random(),
+          obstacleLane: Math.floor(Math.random() * 3),
+          shardLane: Math.floor(Math.random() * 3),
+        },
+      });
       frameId = requestAnimationFrame(loop);
     };
     frameId = requestAnimationFrame(loop);
     return () => cancelAnimationFrame(frameId);
   }, [state.runtime.paused, dispatch]);
 
-  const gameplayActions: Partial<Record<GameplayLoopcheckCanaryActionId, () => void>> = {
-    'notifications-1': () => {},
-    'account-circle-2': () => {},
-    'notifications-3': () => {},
-    'start-game-4': () => dispatch({ type: 'START_GAME' }),
-    'restart-game-5': () => dispatch({ type: 'RESTART_GAME' }),
-    'sync-6': () => dispatch({ type: 'SYNC' }),
-    'gameplay-1': () => {},
-    'settings-2': () => dispatch({ type: 'SET_SCREEN', screen: 'settings' }),
-    'gameplay-3': () => {},
-    'settings-4': () => dispatch({ type: 'SET_SCREEN', screen: 'settings' }),
-  };
+  const gameplayActions = useMemo<Partial<Record<GameplayLoopcheckCanaryActionId, () => void>>>(
+    () => ({
+      'notifications-1': () => {},
+      'account-circle-2': () => {},
+      'notifications-3': () => {},
+      'start-game-4': () => dispatch({ type: 'START_GAME' }),
+      'restart-game-5': () => dispatch({ type: 'RESTART_GAME' }),
+      'sync-6': () => dispatch({ type: 'SYNC', timestamp: new Date().toISOString() }),
+      'gameplay-1': () => {},
+      'settings-2': () => dispatch({ type: 'SET_SCREEN', screen: 'settings' }),
+      'gameplay-3': () => {},
+      'settings-4': () => dispatch({ type: 'SET_SCREEN', screen: 'settings' }),
+    }),
+    [dispatch],
+  );
 
-  const settingsActions: Partial<Record<GameSettingsLoopcheckCanaryActionId, () => void>> = {
-    'notifications-1': () => {},
-    'account-circle-2': () => {},
-    'save-preferences-3': () => dispatch({ type: 'SAVE_PREFERENCES' }),
-    'return-to-gameplay-4': () => dispatch({ type: 'SET_SCREEN', screen: 'gameplay' }),
-    'reset-preferences-5': () => dispatch({ type: 'RESET_PREFERENCES' }),
-    'gameplay-6': () => dispatch({ type: 'SET_SCREEN', screen: 'gameplay' }),
-    'settings-7': () => {},
-    'gameplay-1': () => dispatch({ type: 'SET_SCREEN', screen: 'gameplay' }),
-    'settings-2': () => {},
-  };
+  const settingsActions = useMemo<Partial<Record<GameSettingsLoopcheckCanaryActionId, () => void>>>(
+    () => ({
+      'notifications-1': () => {},
+      'account-circle-2': () => {},
+      'save-preferences-3': () =>
+        dispatch({ type: 'SAVE_PREFERENCES', timestamp: new Date().toISOString() }),
+      'return-to-gameplay-4': () => dispatch({ type: 'SET_SCREEN', screen: 'gameplay' }),
+      'reset-preferences-5': () =>
+        dispatch({ type: 'RESET_PREFERENCES', timestamp: new Date().toISOString() }),
+      'gameplay-6': () => dispatch({ type: 'SET_SCREEN', screen: 'gameplay' }),
+      'settings-7': () => {},
+      'gameplay-1': () => dispatch({ type: 'SET_SCREEN', screen: 'gameplay' }),
+      'settings-2': () => {},
+    }),
+    [dispatch],
+  );
 
   return (
     <div

@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useReducer, useRef } from 'react';
+import { createContext, useContext, useEffect, useReducer } from 'react';
 import type { ReactNode, Dispatch } from 'react';
 import { loadState, saveState } from './loopcheck-canary.repo';
 import { defaultState } from '../../__fixtures__/loopcheck-canary.fixture';
@@ -14,29 +14,45 @@ export type LoopcheckAction =
   | { type: 'START_GAME' }
   | { type: 'RESTART_GAME' }
   | { type: 'TOGGLE_PAUSE' }
-  | { type: 'SYNC' }
-  | { type: 'TICK' }
+  | { type: 'SYNC'; timestamp: string }
+  | {
+      type: 'TICK';
+      payload: {
+        obstacleRand: number;
+        shardRand: number;
+        obstacleLane: number;
+        shardLane: number;
+      };
+    }
   | { type: 'UPDATE_PREFERENCES'; preferences: Partial<LoopcheckPreferences> }
-  | { type: 'SAVE_PREFERENCES' }
-  | { type: 'RESET_PREFERENCES' }
+  | { type: 'SAVE_PREFERENCES'; timestamp: string }
+  | { type: 'RESET_PREFERENCES'; timestamp: string }
   | { type: 'SET_ERROR'; error: string | null };
 
-function advanceRuntime(runtime: LoopcheckAppState['runtime']) {
+function advanceRuntime(
+  runtime: LoopcheckAppState['runtime'],
+  randoms: {
+    obstacleRand: number;
+    shardRand: number;
+    obstacleLane: number;
+    shardLane: number;
+  },
+) {
   const step = 1 + runtime.player.position / 1000 + runtime.obstacles.length / 100;
   const nextObstacles = runtime.obstacles
     .map((o) => ({ ...o, position: o.position + step }))
     .filter((o) => o.position < 120);
 
-  if (Math.random() < 0.03) {
-    nextObstacles.push({ lane: Math.floor(Math.random() * 3), position: 0 });
+  if (randoms.obstacleRand < 0.03) {
+    nextObstacles.push({ lane: randoms.obstacleLane, position: 0 });
   }
 
   const nextShards = runtime.shards
     .map((s) => ({ ...s, position: s.position + step }))
     .filter((s) => s.position < 120);
 
-  if (Math.random() < 0.015) {
-    nextShards.push({ lane: Math.floor(Math.random() * 3), position: 0 });
+  if (randoms.shardRand < 0.015) {
+    nextShards.push({ lane: randoms.shardLane, position: 0 });
   }
 
   return {
@@ -95,14 +111,14 @@ function reducer(state: LoopcheckAppState, action: LoopcheckAction): LoopcheckAp
     case 'SYNC':
       return {
         ...state,
-        lastSyncedAt: new Date().toISOString(),
+        lastSyncedAt: action.timestamp,
         error: null,
       };
 
     case 'TICK':
       return {
         ...state,
-        runtime: advanceRuntime(state.runtime),
+        runtime: advanceRuntime(state.runtime, action.payload),
       };
 
     case 'UPDATE_PREFERENCES':
@@ -114,7 +130,7 @@ function reducer(state: LoopcheckAppState, action: LoopcheckAction): LoopcheckAp
     case 'SAVE_PREFERENCES':
       return {
         ...state,
-        lastSyncedAt: new Date().toISOString(),
+        lastSyncedAt: action.timestamp,
         error: null,
       };
 
@@ -126,7 +142,7 @@ function reducer(state: LoopcheckAppState, action: LoopcheckAction): LoopcheckAp
           speed: 50,
           assistMode: false,
         },
-        lastSyncedAt: new Date().toISOString(),
+        lastSyncedAt: action.timestamp,
         error: null,
       };
 
@@ -145,22 +161,29 @@ interface LoopcheckContextValue {
 
 const LoopcheckContext = createContext<LoopcheckContextValue | null>(null);
 
+function initializeState(initial: LoopcheckAppState): LoopcheckAppState {
+  const saved = loadState();
+  return saved ? { ...initial, ...saved } : initial;
+}
+
 export function LoopcheckProvider({ children }: { children: ReactNode }) {
-  const [state, dispatch] = useReducer(reducer, defaultState);
-  const hydratedRef = useRef(false);
+  const [state, dispatch] = useReducer(reducer, defaultState, initializeState);
 
   useEffect(() => {
-    const saved = loadState();
-    if (saved) {
-      dispatch({ type: 'HYDRATE', payload: saved });
-    }
-    hydratedRef.current = true;
-  }, []);
-
-  useEffect(() => {
-    if (hydratedRef.current) {
+    const handler = setTimeout(() => {
       saveState(state);
-    }
+    }, 1000);
+
+    const handleBeforeUnload = () => {
+      saveState(state);
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    return () => {
+      clearTimeout(handler);
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
   }, [state]);
 
   return (
