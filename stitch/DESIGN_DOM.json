@@ -1,0 +1,880 @@
+{
+  "generatedAt": "2026-06-30T03:02:46.554Z",
+  "screenCount": 2,
+  "screens": {
+    "30209eeafe33472491dee38278dc1ed6": {
+      "screenId": "30209eeafe33472491dee38278dc1ed6",
+      "materialSymbolsRequired": true,
+      "sections": [
+        {
+          "tag": "header",
+          "layout": "flex-row",
+          "classes": [
+            "bg-surface",
+            "border-b",
+            "border-outline-variant",
+            "flex-shrink-0",
+            "z-40"
+          ],
+          "childCount": 3
+        },
+        {
+          "tag": "main",
+          "layout": "flex-row",
+          "classes": [
+            "flex-grow",
+            "overflow-y-auto",
+            "pb-24",
+            "md:pb-0"
+          ],
+          "childCount": 31
+        },
+        {
+          "tag": "nav",
+          "layout": "flex-row",
+          "classes": [
+            "md:hidden",
+            "fixed",
+            "bottom-0",
+            "w-full",
+            "flex",
+            "justify-around",
+            "items-center",
+            "h-xl",
+            "px-md",
+            "bg-surface"
+          ],
+          "childCount": 0
+        }
+      ],
+      "buttons": [
+        {
+          "kind": "button",
+          "label": "notifications",
+          "classes": [
+            "p-[6px]",
+            "rounded-full",
+            "hover:bg-surface-container-low",
+            "transition-colors",
+            "text-primary",
+            "active:scale-95",
+            "duration-100",
+            "focus:outline-none",
+            "focus:ring-2",
+            "focus:ring-primary-container",
+            "focus:ring-offset-1",
+            "focus:ring-offset-surface"
+          ],
+          "icon": "notifications",
+          "action": "navigate",
+          "expectedBehavior": "navigate:/notifications",
+          "expectedRoute": "/notifications",
+          "routeInferred": true
+        },
+        {
+          "kind": "button",
+          "label": "account_circle",
+          "classes": [
+            "p-[6px]",
+            "rounded-full",
+            "hover:bg-surface-container-low",
+            "transition-colors",
+            "text-primary",
+            "active:scale-95",
+            "duration-100",
+            "focus:outline-none",
+            "focus:ring-2",
+            "focus:ring-primary-container",
+            "focus:ring-offset-1",
+            "focus:ring-offset-surface"
+          ],
+          "icon": "account_circle",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "Save Preferences",
+          "classes": [
+            "w-full",
+            "sm:w-auto",
+            "bg-primary-container",
+            "text-on-primary-container",
+            "font-body-md",
+            "text-body-md",
+            "font-bold",
+            "px-md",
+            "py-[6px]",
+            "rounded-DEFAULT",
+            "border",
+            "border-primary",
+            "hover:bg-primary",
+            "hover:text-on-primary",
+            "transition-colors",
+            "focus:outline-none",
+            "focus:ring-2",
+            "focus:ring-primary-container",
+            "focus:ring-offset-2",
+            "shadow-sm",
+            "active:scale-95"
+          ],
+          "icon": null,
+          "action": "form-submit",
+          "expectedBehavior": "validate inputs and submit/apply changes"
+        },
+        {
+          "kind": "button",
+          "label": "Return to Gameplay",
+          "classes": [
+            "w-full",
+            "sm:w-auto",
+            "bg-surface",
+            "border",
+            "border-outline",
+            "text-on-surface",
+            "font-body-md",
+            "text-body-md",
+            "px-md",
+            "py-[6px]",
+            "rounded-DEFAULT",
+            "hover:bg-surface-container-low",
+            "transition-colors",
+            "focus:outline-none",
+            "focus:ring-2",
+            "focus:ring-outline",
+            "focus:ring-offset-2",
+            "shadow-sm",
+            "active:scale-95"
+          ],
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "Reset Preferences",
+          "classes": [
+            "text-error",
+            "font-body-sm",
+            "text-body-sm",
+            "hover:underline",
+            "focus:outline-none",
+            "rounded-DEFAULT",
+            "px-2",
+            "py-1",
+            "hover:bg-error-container",
+            "transition-colors"
+          ],
+          "icon": null,
+          "action": "reset",
+          "expectedBehavior": "reset visible value/state, with confirmation if destructive"
+        },
+        {
+          "kind": "button",
+          "label": "Gameplay",
+          "classes": [
+            "flex",
+            "flex-col",
+            "items-center",
+            "justify-center",
+            "text-secondary",
+            "w-[80px]",
+            "h-full",
+            "focus:outline-none"
+          ],
+          "icon": "sports_esports",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "settings",
+          "classes": [
+            "flex",
+            "flex-col",
+            "items-center",
+            "justify-center",
+            "bg-primary-container",
+            "text-on-primary-container",
+            "rounded-full",
+            "px-4",
+            "py-1",
+            "h-[40px]",
+            "focus:outline-none",
+            "focus:ring-2",
+            "focus:ring-offset-2",
+            "focus:ring-primary-container",
+            "transition-transform",
+            "active:scale-90"
+          ],
+          "icon": "settings",
+          "action": "navigate",
+          "expectedBehavior": "navigate:/settings",
+          "expectedRoute": "/settings",
+          "routeInferred": true
+        }
+      ],
+      "inputs": [
+        {
+          "kind": "input",
+          "type": "radio",
+          "label": "difficulty",
+          "placeholder": "",
+          "name": "difficulty",
+          "classes": [
+            "peer",
+            "sr-only"
+          ],
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        },
+        {
+          "kind": "input",
+          "type": "range",
+          "label": "range",
+          "placeholder": "",
+          "name": "",
+          "classes": [
+            "w-full",
+            "h-2",
+            "bg-surface-container-highest",
+            "rounded-full",
+            "appearance-none",
+            "cursor-pointer",
+            "accent-primary",
+            "focus:outline-none",
+            "focus:ring-2",
+            "focus:ring-primary-container",
+            "focus:ring-offset-2",
+            "focus:ring-offset-surface"
+          ],
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        },
+        {
+          "kind": "input",
+          "type": "checkbox",
+          "label": "checkbox",
+          "placeholder": "",
+          "name": "",
+          "classes": [
+            "sr-only",
+            "peer"
+          ],
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        }
+      ],
+      "navLinks": [
+        {
+          "kind": "link",
+          "label": "Gameplay",
+          "href": "#",
+          "classes": [
+            "text-secondary",
+            "pb-[14px]",
+            "hover:bg-surface-container-low",
+            "transition-colors",
+            "font-body-md",
+            "text-body-md",
+            "px-sm",
+            "rounded-t-DEFAULT"
+          ],
+          "icon": null,
+          "action": "navigate",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "Settings",
+          "href": "#",
+          "classes": [
+            "text-primary",
+            "border-b-2",
+            "border-primary",
+            "pb-[12px]",
+            "font-body-md",
+            "text-body-md",
+            "px-sm",
+            "font-semibold"
+          ],
+          "icon": null,
+          "action": "navigate",
+          "expectedBehavior": "navigate:#"
+        }
+      ],
+      "cards": [],
+      "icons": [
+        "bug_report",
+        "notifications",
+        "account_circle",
+        "tune",
+        "keyboard",
+        "sports_esports",
+        "settings"
+      ],
+      "images": [],
+      "cssVars": {},
+      "colorPalette": {
+        "secondary-fixed": "#dae2fd",
+        "surface-container-low": "#eff4ff",
+        "on-secondary-fixed": "#131b2e",
+        "secondary-fixed-dim": "#bec6e0",
+        "surface-variant": "#d3e4fe",
+        "outline-variant": "#d0c6ab",
+        "on-secondary-fixed-variant": "#3f465c",
+        "outline": "#7e775f",
+        "error-container": "#ffdad6",
+        "secondary-container": "#dae2fd",
+        "surface-container-high": "#dce9ff",
+        "surface-container-highest": "#d3e4fe",
+        "error": "#ba1a1a",
+        "tertiary-container": "#00f1ff",
+        "on-primary-container": "#705e00",
+        "on-tertiary-fixed": "#002022",
+        "primary-fixed": "#ffe16d",
+        "inverse-on-surface": "#eaf1ff",
+        "on-primary-fixed": "#221b00",
+        "inverse-primary": "#e9c400",
+        "tertiary-fixed": "#79f5ff",
+        "surface-tint": "#705d00",
+        "on-primary": "#ffffff",
+        "surface": "#f8f9ff",
+        "primary-container": "#ffd700",
+        "surface-dim": "#cbdbf5",
+        "on-surface": "#0b1c30",
+        "surface-container": "#e5eeff",
+        "secondary": "#565e74",
+        "surface-bright": "#f8f9ff",
+        "on-tertiary-container": "#006a70",
+        "on-error-container": "#93000a",
+        "primary-fixed-dim": "#e9c400",
+        "on-secondary": "#ffffff",
+        "on-tertiary": "#ffffff",
+        "on-tertiary-fixed-variant": "#004f54",
+        "on-error": "#ffffff",
+        "inverse-surface": "#213145",
+        "on-surface-variant": "#4d4732",
+        "on-background": "#0b1c30",
+        "on-secondary-container": "#5c647a",
+        "on-primary-fixed-variant": "#544600",
+        "background": "#f8f9ff",
+        "primary": "#705d00",
+        "tertiary": "#00696f",
+        "tertiary-fixed-dim": "#00dbe8",
+        "surface-container-lowest": "#ffffff"
+      },
+      "fonts": [
+        "Material Symbols Outlined",
+        "Inter",
+        "JetBrains Mono"
+      ],
+      "layoutHints": {
+        "gridCols": 1,
+        "flexDirection": "col"
+      },
+      "behaviorContract": [
+        {
+          "kind": "link",
+          "label": "Gameplay",
+          "icon": null,
+          "route": "#",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "Settings",
+          "icon": null,
+          "route": "#",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "button",
+          "label": "notifications",
+          "icon": "notifications",
+          "action": "navigate",
+          "route": "/notifications",
+          "expectedBehavior": "navigate:/notifications"
+        },
+        {
+          "kind": "button",
+          "label": "account_circle",
+          "icon": "account_circle",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "Save Preferences",
+          "icon": null,
+          "action": "form-submit",
+          "expectedBehavior": "validate inputs and submit/apply changes"
+        },
+        {
+          "kind": "button",
+          "label": "Return to Gameplay",
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "Reset Preferences",
+          "icon": null,
+          "action": "reset",
+          "expectedBehavior": "reset visible value/state, with confirmation if destructive"
+        },
+        {
+          "kind": "button",
+          "label": "Gameplay",
+          "icon": "sports_esports",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "settings",
+          "icon": "settings",
+          "action": "navigate",
+          "route": "/settings",
+          "expectedBehavior": "navigate:/settings"
+        },
+        {
+          "kind": "input",
+          "label": "difficulty",
+          "type": "radio",
+          "placeholder": "",
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        },
+        {
+          "kind": "input",
+          "label": "range",
+          "type": "range",
+          "placeholder": "",
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        },
+        {
+          "kind": "input",
+          "label": "checkbox",
+          "type": "checkbox",
+          "placeholder": "",
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        }
+      ],
+      "tabBar": [
+        {
+          "kind": "link",
+          "label": "Gameplay",
+          "icon": null,
+          "route": "#",
+          "active": false
+        },
+        {
+          "kind": "link",
+          "label": "Settings",
+          "icon": null,
+          "route": "#",
+          "active": true
+        },
+        {
+          "kind": "button",
+          "label": "Gameplay",
+          "icon": "sports_esports",
+          "active": false
+        },
+        {
+          "kind": "button",
+          "label": "settings",
+          "icon": "settings",
+          "active": true
+        }
+      ],
+      "title": "Game Settings - LoopCheck Canary"
+    },
+    "a27309769eb04ad8869805368be651b2": {
+      "screenId": "a27309769eb04ad8869805368be651b2",
+      "materialSymbolsRequired": true,
+      "sections": [
+        {
+          "tag": "nav",
+          "layout": "flex-col",
+          "classes": [
+            "hidden",
+            "md:flex",
+            "flex-col",
+            "py-lg",
+            "px-md",
+            "gap-sm",
+            "bg-surface",
+            "dark:bg-on-background",
+            "border-r",
+            "border-outline-variant"
+          ],
+          "childCount": 1
+        },
+        {
+          "tag": "main",
+          "layout": "flex-col",
+          "classes": [
+            "flex-1",
+            "flex",
+            "flex-col",
+            "h-full",
+            "w-full",
+            "md:ml-64",
+            "relative"
+          ],
+          "childCount": 41
+        },
+        {
+          "tag": "nav",
+          "layout": "flex-row",
+          "classes": [
+            "md:hidden",
+            "fixed",
+            "bottom-0",
+            "w-full",
+            "flex",
+            "justify-around",
+            "items-center",
+            "h-xl",
+            "px-md",
+            "bg-surface"
+          ],
+          "childCount": 0
+        }
+      ],
+      "buttons": [
+        {
+          "kind": "button",
+          "label": "notifications",
+          "classes": [
+            "text-secondary",
+            "hover:bg-surface-container-low",
+            "p-1",
+            "rounded-full",
+            "transition-colors",
+            "active:scale-95",
+            "duration-100"
+          ],
+          "icon": "notifications",
+          "action": "navigate",
+          "expectedBehavior": "navigate:/notifications",
+          "expectedRoute": "/notifications",
+          "routeInferred": true
+        },
+        {
+          "kind": "button",
+          "label": "account_circle",
+          "classes": [
+            "text-secondary",
+            "hover:bg-surface-container-low",
+            "p-1",
+            "rounded-full",
+            "transition-colors",
+            "active:scale-95",
+            "duration-100"
+          ],
+          "icon": "account_circle",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "Start Game",
+          "classes": [
+            "btn-primary",
+            "flex-1",
+            "py-2",
+            "rounded",
+            "font-body-md",
+            "text-body-md",
+            "flex",
+            "justify-center",
+            "items-center",
+            "gap-2",
+            "hover:shadow-md",
+            "transition-shadow",
+            "active:scale-95",
+            "duration-100"
+          ],
+          "icon": "play_arrow",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "Restart Game",
+          "classes": [
+            "btn-secondary",
+            "flex-1",
+            "py-2",
+            "rounded",
+            "font-body-md",
+            "text-body-md",
+            "flex",
+            "justify-center",
+            "items-center",
+            "gap-2",
+            "hover:bg-surface-container-low",
+            "transition-colors",
+            "active:scale-95",
+            "duration-100"
+          ],
+          "icon": "restart_alt",
+          "action": "reset",
+          "expectedBehavior": "reset visible value/state, with confirmation if destructive"
+        },
+        {
+          "kind": "button",
+          "label": "Sync",
+          "classes": [
+            "text-secondary",
+            "hover:text-primary",
+            "transition-colors",
+            "flex",
+            "items-center",
+            "gap-1",
+            "active:scale-95"
+          ],
+          "icon": "refresh",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "LoopCheck Canary System Active",
+          "classes": [],
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        }
+      ],
+      "inputs": [
+        {
+          "kind": "input",
+          "type": "checkbox",
+          "label": "toggle",
+          "placeholder": "",
+          "name": "toggle",
+          "classes": [
+            "toggle-checkbox",
+            "absolute",
+            "block",
+            "w-6",
+            "h-6",
+            "rounded-full",
+            "bg-white",
+            "border-4",
+            "appearance-none",
+            "cursor-pointer",
+            "z-10",
+            "transition-transform",
+            "duration-200",
+            "ease-in-out",
+            "border-[#E2E8F0]"
+          ],
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        }
+      ],
+      "navLinks": [
+        {
+          "kind": "link",
+          "label": "Gameplay",
+          "href": "#",
+          "classes": [
+            "material-symbols-outlined"
+          ],
+          "icon": "sports_esports",
+          "action": "navigate",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "settings",
+          "href": "#",
+          "classes": [
+            "material-symbols-outlined"
+          ],
+          "icon": "settings",
+          "action": "navigate",
+          "expectedBehavior": "navigate:#"
+        }
+      ],
+      "cards": [],
+      "icons": [
+        "sports_esports",
+        "settings",
+        "notifications",
+        "account_circle",
+        "play_arrow",
+        "restart_alt",
+        "refresh",
+        "check_circle",
+        "memory",
+        "warning"
+      ],
+      "images": [],
+      "cssVars": {},
+      "colorPalette": {
+        "secondary-fixed": "#dae2fd",
+        "surface-container-low": "#eff4ff",
+        "on-secondary-fixed": "#131b2e",
+        "secondary-fixed-dim": "#bec6e0",
+        "surface-variant": "#d3e4fe",
+        "outline-variant": "#d0c6ab",
+        "on-secondary-fixed-variant": "#3f465c",
+        "outline": "#7e775f",
+        "error-container": "#ffdad6",
+        "secondary-container": "#dae2fd",
+        "surface-container-high": "#dce9ff",
+        "surface-container-highest": "#d3e4fe",
+        "error": "#ba1a1a",
+        "tertiary-container": "#00f1ff",
+        "on-primary-container": "#705e00",
+        "on-tertiary-fixed": "#002022",
+        "primary-fixed": "#ffe16d",
+        "inverse-on-surface": "#eaf1ff",
+        "on-primary-fixed": "#221b00",
+        "inverse-primary": "#e9c400",
+        "tertiary-fixed": "#79f5ff",
+        "surface-tint": "#705d00",
+        "on-primary": "#ffffff",
+        "surface": "#f8f9ff",
+        "primary-container": "#ffd700",
+        "surface-dim": "#cbdbf5",
+        "on-surface": "#0b1c30",
+        "surface-container": "#e5eeff",
+        "secondary": "#565e74",
+        "surface-bright": "#f8f9ff",
+        "on-tertiary-container": "#006a70",
+        "on-error-container": "#93000a",
+        "primary-fixed-dim": "#e9c400",
+        "on-secondary": "#ffffff",
+        "on-tertiary": "#ffffff",
+        "on-tertiary-fixed-variant": "#004f54",
+        "on-error": "#ffffff",
+        "inverse-surface": "#213145",
+        "on-surface-variant": "#4d4732",
+        "on-background": "#0b1c30",
+        "on-secondary-container": "#5c647a",
+        "on-primary-fixed-variant": "#544600",
+        "background": "#f8f9ff",
+        "primary": "#705d00",
+        "tertiary": "#00696f",
+        "tertiary-fixed-dim": "#00dbe8",
+        "surface-container-lowest": "#ffffff"
+      },
+      "fonts": [
+        "Material Symbols Outlined",
+        "Inter",
+        "JetBrains Mono"
+      ],
+      "layoutHints": {
+        "gridCols": 1,
+        "flexDirection": "col",
+        "gap": "4"
+      },
+      "behaviorContract": [
+        {
+          "kind": "link",
+          "label": "Gameplay",
+          "icon": "sports_esports",
+          "route": "#",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "settings",
+          "icon": "settings",
+          "route": "#",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "button",
+          "label": "notifications",
+          "icon": "notifications",
+          "action": "navigate",
+          "route": "/notifications",
+          "expectedBehavior": "navigate:/notifications"
+        },
+        {
+          "kind": "button",
+          "label": "account_circle",
+          "icon": "account_circle",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "Start Game",
+          "icon": "play_arrow",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "Restart Game",
+          "icon": "restart_alt",
+          "action": "reset",
+          "expectedBehavior": "reset visible value/state, with confirmation if destructive"
+        },
+        {
+          "kind": "button",
+          "label": "Sync",
+          "icon": "refresh",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "LoopCheck Canary System Active",
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "input",
+          "label": "toggle",
+          "type": "checkbox",
+          "placeholder": "",
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        }
+      ],
+      "tabBar": [
+        {
+          "kind": "button",
+          "label": "LoopCheck Canary System Active",
+          "icon": null,
+          "active": true
+        },
+        {
+          "kind": "link",
+          "label": "Gameplay",
+          "icon": "sports_esports",
+          "route": "#",
+          "active": true
+        },
+        {
+          "kind": "link",
+          "label": "settings",
+          "icon": "settings",
+          "route": "#",
+          "active": false
+        },
+        {
+          "kind": "link",
+          "label": "Gameplay",
+          "icon": "sports_esports",
+          "route": "#",
+          "active": true
+        },
+        {
+          "kind": "link",
+          "label": "settings",
+          "icon": "settings",
+          "route": "#",
+          "active": true
+        }
+      ],
+      "title": "Gameplay - LoopCheck Canary"
+    }
+  }
+}

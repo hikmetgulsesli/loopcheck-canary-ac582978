@@ -1,0 +1,24 @@
+[
+  {
+    "screenId": "a27309769eb04ad8869805368be651b2",
+    "title": "Gameplay - LoopCheck Canary",
+    "htmlFile": "a27309769eb04ad8869805368be651b2.html",
+    "deviceType": "DESKTOP",
+    "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sX2Q4OWExOTBlMzVlNDRhMjhiNTMwZTZlMjVkOTIyMWI5EgsSBxCN19Wi9xcYAZIBJAoKcHJvamVjdF9pZBIWQhQxNTI1NDE3NzQyMzM3MjQ0MDA0Mw&filename=&opi=96797242",
+    "localHtml": "/Users/setrox/projects/loopcheck-canary-ac582978/stitch/a27309769eb04ad8869805368be651b2.html",
+    "surfaceIds": [
+      "SURF_GAMEPLAY"
+    ]
+  },
+  {
+    "screenId": "30209eeafe33472491dee38278dc1ed6",
+    "title": "Game Settings - LoopCheck Canary",
+    "htmlFile": "30209eeafe33472491dee38278dc1ed6.html",
+    "deviceType": "DESKTOP",
+    "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sX2M1OWYyM2FiZGMxZjRmZDdiM2E0YjQyM2JjYzQyMjE4EgsSBxCN19Wi9xcYAZIBJAoKcHJvamVjdF9pZBIWQhQxNTI1NDE3NzQyMzM3MjQ0MDA0Mw&filename=&opi=96797242",
+    "localHtml": "/Users/setrox/projects/loopcheck-canary-ac582978/stitch/30209eeafe33472491dee38278dc1ed6.html",
+    "surfaceIds": [
+      "SURF_GAME_SETTINGS"
+    ]
+  }
+]

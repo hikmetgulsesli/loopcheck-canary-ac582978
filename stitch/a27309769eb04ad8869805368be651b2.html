@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LoopCheck Canary - Gameplay</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#dae2fd",
+                        "surface-container-low": "#eff4ff",
+                        "on-secondary-fixed": "#131b2e",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "surface-variant": "#d3e4fe",
+                        "outline-variant": "#d0c6ab",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "outline": "#7e775f",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#dae2fd",
+                        "surface-container-high": "#dce9ff",
+                        "surface-container-highest": "#d3e4fe",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#00f1ff",
+                        "on-primary-container": "#705e00",
+                        "on-tertiary-fixed": "#002022",
+                        "primary-fixed": "#ffe16d",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-primary-fixed": "#221b00",
+                        "inverse-primary": "#e9c400",
+                        "tertiary-fixed": "#79f5ff",
+                        "surface-tint": "#705d00",
+                        "on-primary": "#ffffff",
+                        "surface": "#f8f9ff",
+                        "primary-container": "#ffd700",
+                        "surface-dim": "#cbdbf5",
+                        "on-surface": "#0b1c30",
+                        "surface-container": "#e5eeff",
+                        "secondary": "#565e74",
+                        "surface-bright": "#f8f9ff",
+                        "on-tertiary-container": "#006a70",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#e9c400",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#004f54",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#213145",
+                        "on-surface-variant": "#4d4732",
+                        "on-background": "#0b1c30",
+                        "on-secondary-container": "#5c647a",
+                        "on-primary-fixed-variant": "#544600",
+                        "background": "#f8f9ff",
+                        "primary": "#705d00",
+                        "tertiary": "#00696f",
+                        "tertiary-fixed-dim": "#00dbe8",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "sm": "8px",
+                        "container-max": "1200px",
+                        "base": "4px",
+                        "xl": "40px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "display": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "label-mono": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "display": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-caps": ["10px", { "lineHeight": "12px", "letterSpacing": "0.08em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-sm": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-mono": ["11px", { "lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Minimalist-Industrial Custom Styles */
+        body { background-color: #F8FAFC; }
+        .card-surface { background-color: #FFFFFF; border: 1px solid #E2E8F0; }
+        .card-surface-active { border-top: 3px solid #22c55e; } /* Green */
+        .card-surface-idle { border-top: 3px solid #94a3b8; } /* Gray */
+        .card-surface-warning { border-top: 3px solid #eab308; } /* Yellow */
+        
+        .btn-primary { background-color: #FFD700; color: #0b1c30; font-weight: bold; }
+        .btn-secondary { background-color: #FFFFFF; border: 1px solid #CBD5E1; color: #0b1c30; }
+        
+        /* Toggle Switch */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #FFD700;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #FFD700;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-background flex h-screen overflow-hidden antialiased">
+<!-- SideNavBar (Hidden on Mobile) -->
+<nav class="hidden md:flex flex-col py-lg px-md gap-sm bg-surface dark:bg-on-background border-r border-outline-variant h-full w-64 fixed left-0 top-0">
+<div class="mb-lg">
+<h1 class="font-display text-display font-bold text-primary">LoopCheck Canary</h1>
+<p class="font-body-sm text-body-sm text-secondary mt-1">System Active</p>
+</div>
+<a class="flex items-center gap-md px-sm py-2 text-on-primary-container bg-primary-container font-bold rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">sports_esports</span>
+            Gameplay
+        </a>
+<a class="flex items-center gap-md px-sm py-2 text-secondary hover:bg-surface-container-low transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+            Settings
+        </a>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col h-full w-full md:ml-64 relative">
+<!-- TopAppBar (Web) -->
+<header class="hidden md:flex justify-between items-center w-full px-md h-xl max-w-container-max mx-auto bg-surface border-b border-outline-variant flat no shadows z-10 sticky top-0">
+<div class="flex items-center gap-4">
+<div class="font-headline-sm text-headline-sm font-bold text-on-surface">Gameplay Console</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="text-secondary hover:bg-surface-container-low p-1 rounded-full transition-colors active:scale-95 duration-100">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-secondary hover:bg-surface-container-low p-1 rounded-full transition-colors active:scale-95 duration-100">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<!-- TopAppBar (Mobile) -->
+<header class="md:hidden flex justify-between items-center w-full px-md h-xl bg-surface border-b border-outline-variant flat no shadows z-10 sticky top-0">
+<div class="font-display text-display font-bold text-on-surface">LoopCheck Canary</div>
+<div class="flex items-center gap-md">
+<button class="text-secondary hover:bg-surface-container-low p-1 rounded-full transition-colors active:scale-95 duration-100">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</header>
+<!-- Scrollable Content Area -->
+<div class="flex-1 overflow-y-auto p-md md:p-lg">
+<div class="max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column: Primary Controls & HUD -->
+<div class="lg:col-span-8 flex flex-col gap-gutter">
+<!-- HUD / Header Area -->
+<section class="card-surface p-md rounded-lg flex flex-col md:flex-row justify-between items-start md:items-center gap-md">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-1">Session Alpha</h2>
+<div class="font-label-mono text-label-mono text-secondary flex items-center gap-2">
+<span>ID: 8F92-A1</span>
+<span>•</span>
+<span>Uptime: <span id="uptime-display">00:14:22</span></span>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="flex flex-col items-end">
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest">Score</span>
+<span class="font-display text-display text-primary">14,250</span>
+</div>
+<div class="h-10 w-px bg-outline-variant"></div>
+<div class="flex flex-col items-end">
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest">Progress</span>
+<span class="font-display text-display text-on-surface">78%</span>
+</div>
+</div>
+</section>
+<!-- Primary Actions & Status -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Controls -->
+<div class="card-surface p-md rounded-lg flex flex-col gap-md">
+<h3 class="font-headline-sm text-headline-sm text-on-surface border-b border-outline-variant pb-2">Execution</h3>
+<div class="flex gap-sm mt-2">
+<button class="btn-primary flex-1 py-2 rounded font-body-md text-body-md flex justify-center items-center gap-2 hover:shadow-md transition-shadow active:scale-95 duration-100" onclick="console.log('ACT_START_GAME')">
+<span class="material-symbols-outlined text-[18px]">play_arrow</span>
+                                    Start Game
+                                </button>
+<button class="btn-secondary flex-1 py-2 rounded font-body-md text-body-md flex justify-center items-center gap-2 hover:bg-surface-container-low transition-colors active:scale-95 duration-100" onclick="console.log('ACT_RESTART_GAME')">
+<span class="material-symbols-outlined text-[18px]">restart_alt</span>
+                                    Restart Game
+                                </button>
+</div>
+<div class="mt-4 flex items-center justify-between border-t border-outline-variant pt-4">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-secondary uppercase">System State</span>
+<span class="font-body-md text-body-md font-bold text-on-surface" id="status-label">Ready</span>
+</div>
+<!-- Toggle -->
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 transition-transform duration-200 ease-in-out border-[#E2E8F0]" id="state-toggle" name="toggle" onchange="toggleStatus()" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-[#E2E8F0] cursor-pointer transition-colors duration-200 ease-in-out" for="state-toggle"></label>
+</div>
+</div>
+</div>
+<!-- Secondary Metrics -->
+<div class="card-surface p-md rounded-lg flex flex-col gap-md">
+<div class="flex justify-between items-center border-b border-outline-variant pb-2">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Telemetry</h3>
+<button class="text-secondary hover:text-primary transition-colors flex items-center gap-1 active:scale-95" onclick="updateTimestamp()">
+<span class="material-symbols-outlined text-[16px]">refresh</span>
+<span class="font-label-mono text-label-mono">Sync</span>
+</button>
+</div>
+<div class="flex-1 flex flex-col justify-center">
+<div class="flex justify-between items-center py-2">
+<span class="font-body-sm text-body-sm text-secondary">Last Sync</span>
+<span class="font-label-mono text-label-mono text-on-surface bg-surface-container-low px-2 py-1 rounded" id="sync-timestamp">10:42:15 UTC</span>
+</div>
+<div class="flex justify-between items-center py-2">
+<span class="font-body-sm text-body-sm text-secondary">Latency</span>
+<span class="font-label-mono text-label-mono text-on-surface">24ms</span>
+</div>
+<div class="flex justify-between items-center py-2">
+<span class="font-body-sm text-body-sm text-secondary">Load</span>
+<span class="font-label-mono text-label-mono text-on-surface">42%</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Status Cards (High Density) -->
+<div class="lg:col-span-4 flex flex-col gap-sm">
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">Metrics</h3>
+<!-- Status Card 1 -->
+<div class="card-surface card-surface-active rounded p-sm flex flex-col gap-1 hover:shadow-md transition-shadow">
+<div class="flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-secondary uppercase">Main Loop</span>
+<span class="material-symbols-outlined text-[16px] text-green-600">check_circle</span>
+</div>
+<div class="font-label-mono text-label-mono text-on-surface text-lg">60.0 FPS</div>
+<div class="flex justify-between font-label-mono text-[9px] text-secondary">
+<span>Target: 60</span>
+<span>Drops: 0</span>
+</div>
+</div>
+<!-- Status Card 2 -->
+<div class="card-surface card-surface-idle rounded p-sm flex flex-col gap-1 hover:shadow-md transition-shadow">
+<div class="flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-secondary uppercase">Memory Heap</span>
+<span class="material-symbols-outlined text-[16px] text-slate-400">memory</span>
+</div>
+<div class="font-label-mono text-label-mono text-on-surface text-lg">256 MB</div>
+<div class="w-full bg-surface-container-low h-1 mt-1 rounded overflow-hidden">
+<div class="bg-slate-400 h-full w-[45%]"></div>
+</div>
+</div>
+<!-- Status Card 3 -->
+<div class="card-surface card-surface-warning rounded p-sm flex flex-col gap-1 hover:shadow-md transition-shadow">
+<div class="flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-secondary uppercase">Network I/O</span>
+<span class="material-symbols-outlined text-[16px] text-yellow-600">warning</span>
+</div>
+<div class="font-label-mono text-label-mono text-on-surface text-lg">Sub-optimal</div>
+<div class="flex justify-between font-label-mono text-[9px] text-secondary">
+<span>Ping: 120ms</span>
+<span>Loss: 1.2%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full flex justify-around items-center h-xl px-md bg-surface border-t border-outline-variant z-50">
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">sports_esports</span>
+<span class="font-label-caps text-label-caps mt-1">Gameplay</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="font-label-caps text-label-caps mt-1">Settings</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions
+        function toggleStatus() {
+            const checkbox = document.getElementById('state-toggle');
+            const label = document.getElementById('status-label');
+            
+            if (checkbox.checked) {
+                label.textContent = 'Paused';
+                label.classList.add('text-yellow-600');
+            } else {
+                label.textContent = 'Ready';
+                label.classList.remove('text-yellow-600');
+            }
+        }
+
+        function updateTimestamp() {
+            const now = new Date();
+            const timeString = now.toISOString().split('T')[1].split('.')[0] + ' UTC';
+            const syncEl = document.getElementById('sync-timestamp');
+            syncEl.textContent = timeString;
+            
+            // Visual feedback
+            syncEl.classList.add('bg-primary-container', 'text-on-primary-container');
+            setTimeout(() => {
+                syncEl.classList.remove('bg-primary-container', 'text-on-primary-container');
+            }, 300);
+        }
+    </script>
+</body></html>

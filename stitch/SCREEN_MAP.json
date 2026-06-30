@@ -1,0 +1,20 @@
+[
+  {
+    "screenId": "a27309769eb04ad8869805368be651b2",
+    "name": "Gameplay - LoopCheck Canary",
+    "type": "game",
+    "description": "Gameplay - LoopCheck Canary screen",
+    "surfaceIds": [
+      "SURF_GAMEPLAY"
+    ]
+  },
+  {
+    "screenId": "30209eeafe33472491dee38278dc1ed6",
+    "name": "Game Settings - LoopCheck Canary",
+    "type": "settings",
+    "description": "Game Settings - LoopCheck Canary screen",
+    "surfaceIds": [
+      "SURF_GAME_SETTINGS"
+    ]
+  }
+]
