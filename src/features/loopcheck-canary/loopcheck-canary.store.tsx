@@ -9,7 +9,6 @@ import type {
 } from './loopcheck-canary.types';
 
 export type LoopcheckAction =
-  | { type: 'HYDRATE'; payload: Partial<LoopcheckAppState> }
   | { type: 'SET_SCREEN'; screen: LoopcheckScreen }
   | { type: 'START_GAME' }
   | { type: 'RESTART_GAME' }
@@ -62,11 +61,12 @@ function advanceRuntime(
   };
 }
 
+function withSyncTimestamp(state: LoopcheckAppState, timestamp: string): LoopcheckAppState {
+  return { ...state, lastSyncedAt: timestamp, error: null };
+}
+
 function reducer(state: LoopcheckAppState, action: LoopcheckAction): LoopcheckAppState {
   switch (action.type) {
-    case 'HYDRATE':
-      return { ...state, ...action.payload };
-
     case 'SET_SCREEN':
       return { ...state, screen: action.screen, error: null };
 
@@ -109,11 +109,7 @@ function reducer(state: LoopcheckAppState, action: LoopcheckAction): LoopcheckAp
       };
 
     case 'SYNC':
-      return {
-        ...state,
-        lastSyncedAt: action.timestamp,
-        error: null,
-      };
+      return withSyncTimestamp(state, action.timestamp);
 
     case 'TICK':
       return {
@@ -128,23 +124,20 @@ function reducer(state: LoopcheckAppState, action: LoopcheckAction): LoopcheckAp
       };
 
     case 'SAVE_PREFERENCES':
-      return {
-        ...state,
-        lastSyncedAt: action.timestamp,
-        error: null,
-      };
+      return withSyncTimestamp(state, action.timestamp);
 
     case 'RESET_PREFERENCES':
-      return {
-        ...state,
-        preferences: {
-          difficulty: 'normal',
-          speed: 50,
-          assistMode: false,
+      return withSyncTimestamp(
+        {
+          ...state,
+          preferences: {
+            difficulty: 'normal',
+            speed: 50,
+            assistMode: false,
+          },
         },
-        lastSyncedAt: action.timestamp,
-        error: null,
-      };
+        action.timestamp,
+      );
 
     case 'SET_ERROR':
       return { ...state, error: action.error };
