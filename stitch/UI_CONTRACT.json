@@ -1,0 +1,310 @@
+[
+  {
+    "screenId": "a27309769eb04ad8869805368be651b2",
+    "screenTitle": "Gameplay - LoopCheck Canary",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "Gameplay",
+        "href": "#",
+        "line": 129
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 133
+      },
+      {
+        "type": "link",
+        "label": "Gameplay",
+        "href": "#",
+        "line": 287
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 291
+      },
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 146
+      },
+      {
+        "type": "button",
+        "label": "account_circle",
+        "line": 149
+      },
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 158
+      },
+      {
+        "type": "button",
+        "label": "Start Game",
+        "line": 196
+      },
+      {
+        "type": "button",
+        "label": "Restart Game",
+        "line": 200
+      },
+      {
+        "type": "button",
+        "label": "Sync",
+        "line": 221
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 212
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "Gameplay",
+        "href": "#",
+        "line": 129
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 133
+      },
+      {
+        "type": "link",
+        "label": "Gameplay",
+        "href": "#",
+        "line": 287
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 291
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 146
+      },
+      {
+        "type": "button",
+        "label": "account_circle",
+        "line": 149
+      },
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 158
+      },
+      {
+        "type": "button",
+        "label": "Start Game",
+        "line": 196
+      },
+      {
+        "type": "button",
+        "label": "Restart Game",
+        "line": 200
+      },
+      {
+        "type": "button",
+        "label": "Sync",
+        "line": 221
+      }
+    ],
+    "inputs": [
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 212
+      }
+    ],
+    "hardcodedData": [],
+    "totalInteractive": 11,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "30209eeafe33472491dee38278dc1ed6",
+    "screenTitle": "Game Settings - LoopCheck Canary",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "Gameplay",
+        "href": "#",
+        "line": 137
+      },
+      {
+        "type": "link",
+        "label": "Settings",
+        "href": "#",
+        "line": 140
+      },
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 146
+      },
+      {
+        "type": "button",
+        "label": "account_circle",
+        "line": 149
+      },
+      {
+        "type": "button",
+        "label": "Save Preferences",
+        "line": 227
+      },
+      {
+        "type": "button",
+        "label": "Return to Gameplay",
+        "line": 230
+      },
+      {
+        "type": "button",
+        "label": "Reset Preferences",
+        "line": 234
+      },
+      {
+        "type": "button",
+        "label": "Gameplay",
+        "line": 279
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 283
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 180
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 186
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 192
+      },
+      {
+        "type": "input",
+        "label": "range",
+        "inputType": "range",
+        "line": 205
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 218
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "Gameplay",
+        "href": "#",
+        "line": 137
+      },
+      {
+        "type": "link",
+        "label": "Settings",
+        "href": "#",
+        "line": 140
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 146
+      },
+      {
+        "type": "button",
+        "label": "account_circle",
+        "line": 149
+      },
+      {
+        "type": "button",
+        "label": "Save Preferences",
+        "line": 227
+      },
+      {
+        "type": "button",
+        "label": "Return to Gameplay",
+        "line": 230
+      },
+      {
+        "type": "button",
+        "label": "Reset Preferences",
+        "line": 234
+      },
+      {
+        "type": "button",
+        "label": "Gameplay",
+        "line": 279
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 283
+      }
+    ],
+    "inputs": [
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 180
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 186
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 192
+      },
+      {
+        "type": "input",
+        "label": "range",
+        "inputType": "range",
+        "line": 205
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 218
+      }
+    ],
+    "hardcodedData": [],
+    "totalInteractive": 14,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  }
+]
